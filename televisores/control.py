@@ -1,49 +1,45 @@
-from televisores.tv import TV
-
 class Control:
+    def __init__(self):
+        self.__tv = None 
 
-    #definicion de atributo tv
-
-    def __init__ (self):
-        self.tv = None
-
-#definicion de set y get del atributo Tv
-
-    def getTv(self):
-        return self.tv
-    def setTv(self,tv):
-        self.tv = tv
-
-#definicion de metodos turnOn y turnOff
+    def setTv(self, tv):
+        self.__tv = tv
 
     def turnOn(self):
-        self.tv.turnOn()
-    def turnOff(self):
-        self.tv.turnOff()
-    
-#definicion de metodos canalUp y canalDown
+        if self.__tv:
+            self.__tv.turnOn()
 
     def canalUp(self):
-        self.tv.canalUp()
-    def canalDown(self):
-        self.tv.canalDown()
-    
-#definicion de metodos volumenUp y volumenDown
+        if self.__tv:
+            self.__tv.canalUp()
+
+    def setCanal(self, canal: int):
+        if self.__tv:
+            self.__tv.setCanal(canal)
+
+    def enlazar(self, tv):
+        self.__tv = tv
+        tv.setControl(self) 
+
+    def turnOff(self):
+        if self.__tv:
+            self.__tv.turnOff()
+
+    def volumenDown(self):
+        if self.__tv:
+            self.__tv.volumenDown()
 
     def volumenUp(self):
-        self.tv.volumenUp()
-    def volumenDown(self):
-        self.tv.volumenDown()
+        if self.__tv:
+            self.__tv.volumenUp()
 
-#definicion de metodos setCanal y setVolumen
+    def canalDown(self):
+        if self.__tv:
+            self.__tv.canalDown()
 
-    def setCanal(self,canal):
-        self.tv.setCanal(canal)
-    def setVolumen(self,volumen):
-        self.tv.setVolumen(volumen)
+    def getTv(self):
+        return self.__tv
 
-#definicion de metodo enlazar
-
-    def enlazar(self,tv):
-        self.tv = tv
-        self.tv.setControl(self)
+    def setVolumen(self, volumen: int):
+        if self.__tv:
+            self.__tv.setVolumen(volumen)
